@@ -1,0 +1,16 @@
+- name: test ping
+  hosts: all
+  gather_facts: true
+  
+  tasks:
+   - name: test ping
+     ping:
+     register: output
+
+   - name: display output
+     debug:
+      var: output
+
+   - debug: 
+      msg: "show is"
+     when: output.ping == "pong1"
